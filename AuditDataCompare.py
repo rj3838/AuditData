@@ -43,3 +43,31 @@ print(list_of_frames)
 mean_frame = sum(list_of_frames)/len(list_of_frames)
 
 print(mean_frame)
+
+# add the section names back into the dataframe and write it to disk.
+
+# take the first file and extract the section column as this will be used to but the sections back in
+# the dataframe
+
+section_column_data = pd.read_csv(file_path_list[0], header=1)
+#section_column_data = section_column_data.take([0], axis=1)
+
+first_column = section_column_data.iloc[:, 0].tolist()
+
+#section_column_list = section_column_data[0].values.tolist()
+
+
+#mean_frame.concat([section_column], axis=1, inplace=True, ignore_index=False)
+print(first_column)
+#full_mean_frame =  mean_frame.insert(0, 'Section', first_column)
+mean_frame.insert(0, 'Section', first_column)
+#full_mean_frame= (mean_frame.insert(0, "Section", section_column_data['Section'])
+#d.concat(pd.Series(section_column_data, index=mean_frame.index, name="Section"),mean_frame],axis=1)
+#(0, section_column_data['Section'])
+
+print(mean_frame)
+
+
+
+
+
