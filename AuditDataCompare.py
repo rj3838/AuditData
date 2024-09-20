@@ -19,27 +19,25 @@ list_of_frames : list = []
 print(type(file_path_list))
 
 for file_name in file_path_list:
-    print(file_name)
-
-    #input_df: DataFrame = pd.read_csv(file_name, sep = ',')
+    #print(file_name)
     input_df = fn_get_data(file_name)
-    #print(input_df)
-    #input_df.to_csv("/Users/royj/out.csv")
 
     # drop the section labels as it's not possible to calculate with the strings !
 
     input_df.drop(['Section'], axis = 1, inplace = True)
+
+    # convert all the data to floating point
     input_df = input_df.apply(lambda x: x.map(float))
 
+    # append all the frames so they are a single entity (list)
     list_of_frames.append(input_df)
 
-
-    #input_np_array = input_df.to_numpy()
+# show each frame so we can see what we are dealing with
 
 print(list_of_frames)
 
-    #input_df = pd.read_csv(file_name, sep = ',')
+# average the frames
 
-#sum(frame for frame in  list_of_frames.values())/len(list_of_frames)
-print(sum(list_of_frames)/len(list_of_frames))
+mean_frame = sum(list_of_frames)/len(list_of_frames)
 
+print(mean_frame)
