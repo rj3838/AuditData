@@ -12,6 +12,8 @@ from fn_get_data import fn_get_data
 root = tk.Tk()
 root.withdraw()
 
+# TODO : add the request banner to the askopenfilenames to make sure only cht files are supplied
+
 file_path_list = filedialog.askopenfilenames()
 
 list_of_frames : list = []
